@@ -40,3 +40,10 @@ def recommend(request: RecommendationRequest):
     return {
         "recommendation": recommendation
     }
+
+@app.get("/info")
+def info():
+    return {
+        "name": "DevOps LLMOps Lab",
+        "version": "0.1.0"
+    }
