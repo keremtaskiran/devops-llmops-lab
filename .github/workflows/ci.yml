@@ -54,6 +54,19 @@ jobs:
       - name: Inspect image
         run: docker image inspect devops-llmops-lab:ci
 
+      - name: Run container
+        run: |
+          docker run -d --name devops-llmops-lab -p 8000:8000 devops-llmops-lab:ci
+
+      - name: Test health endpoint
+        run: |
+          sleep 3
+          curl --fail http://127.0.0.1:8000/health
+
+      - name: Show container logs
+        if: always()
+        run: docker logs devops-llmops-lab
+
 
   docker-build:
     runs-on: ubuntu-latest
