@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-
+import os
 
 app = FastAPI(
     title="DevOps LLMOps Lab",
@@ -17,7 +17,8 @@ class RecommendationRequest(BaseModel):
 def health():
     return {
         "status": "ok",
-        "version": "0.1.0"
+        "version": "0.1.0",
+        "environment": os.getenv("APP_ENV", "local")
     }
 
 
@@ -39,4 +40,11 @@ def recommend(request: RecommendationRequest):
 
     return {
         "recommendation": recommendation
+    }
+
+@app.get("/info")
+def info():
+    return {
+        "name": "DevOps LLMOps Lab",
+        "version": "0.1.0"
     }
