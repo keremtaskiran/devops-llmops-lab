@@ -56,7 +56,7 @@ jobs:
 
       - name: Run container
         run: |
-          docker run -d --name devops-llmops-lab -p 8000:8000 devops-llmops-lab:ci
+          docker run -d --name devops-llmops-lab -e APP_ENV=test -p 8000:8000 devops-llmops-lab:ci
 
       - name: Test health endpoint
         run: |
