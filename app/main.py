@@ -26,7 +26,7 @@ def recommend(request: RecommendationRequest):
     body_type = (request.body_type or "").lower()
 
     if body_type == "sedan" and request.family:
-        recommendation = "Superb"
+        recommendation = "Kodiaq"
 
     elif body_type == "sedan":
         recommendation = "Octavia"
